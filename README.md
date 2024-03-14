@@ -1,39 +1,39 @@
-# plaid-node [![npm version](https://badge.fury.io/js/plaid.svg)](http://badge.fury.io/js/plaid)
+  # plaid-node [![npm version](https://badge.fury.io/js/plaid.svg)](http://badge.fury.io/js/plaid)
 
-The official Node.js client library for the [Plaid API][1].
+  The official Node.js client library for the [Plaid API][1].
 
-## Table of Contents
+  ## Table of Contents
 
-- [Installation](#install)
+  - [Installation](#install)
   - [Versioning](#versioning)
-- [Getting started](#getting-started)
-- [Error Handling](#error-handling)
-- [Examples](#examples)
-- [Promise Support](#promise-support)
-- [Migration Guide](#migration-guide)
-- [Support](#support)
-- [Contributing](#contributing)
-- [License](#license)
+  - [Getting started](#getting-started)
+  - [Error Handling](#error-handling)
+  - [Examples](#examples)
+  - [Promise Support](#promise-support)
+  - [Migration Guide](#migration-guide)
+  - [Support](#support)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-## Install
+  ## Install
 
 ```console
 $ npm install plaid
 ```
 
-## Versioning
+  ## Versioning
 
-This release only supports the latest Plaid API version, `2020-09-14`, and is generated from our [OpenAPI schema](https://github.com/plaid/plaid-openapi).
+  This release only supports the latest Plaid API version, `2020-09-14`, and is generated from our [OpenAPI schema](https://github.com/plaid/plaid-openapi).
 
-For information about what has changed between versions and how to update your integration, head to the [API upgrade guide][api-upgrades].
+  For information about what has changed between versions and how to update your integration, head to the [API upgrade guide][api-upgrades].
 
-The plaid-node client library is typically updated on a monthly basis. The canonical source for the latest version number is the [client library changelog](https://github.com/plaid/plaid-node/blob/master/CHANGELOG.md). New versions are published as [GitHub tags](https://github.com/plaid/plaid-node/tags), not as Releases. New versions are also published on [npm](https://www.npmjs.com/package/plaid). Plaid uses semantic versioning to version the client libraries, with potentially breaking changes being indicated by a major version bump.
+  The plaid-node client library is typically updated on a monthly basis. The canonical source for the latest version number is the [client library changelog](https://github.com/plaid/plaid-node/blob/master/CHANGELOG.md). New versions are published as [GitHub tags](https://github.com/plaid/plaid-node/tags), not as Releases. New versions are also published on [npm](https://www.npmjs.com/package/plaid). Plaid uses semantic versioning to version the client libraries, with potentially breaking changes being indicated by a major version bump.
 
-All users are strongly recommended to use a recent version of the library, as older versions do not contain support for new endpoints and fields. For more details, see the [Migration Guide](#migration-guide).
+  All users are strongly recommended to use a recent version of the library, as older versions do not contain support for new endpoints and fields. For more details, see the [Migration Guide](#migration-guide).
 
-## Getting started
+  ## Getting started
 
-Most endpoints require a valid `client_id` and `secret` as authentication. Attach them via the configuration.
+  Most endpoints require a valid `client_id` and `secret` as authentication. Attach them via the configuration.
 
 ```typescript
 import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
@@ -49,13 +49,13 @@ const configuration = new Configuration({
 });
 ```
 
-The `PlaidEnvironments` parameter dictates which Plaid API environment you will access. Values are:
+  The `PlaidEnvironments` parameter dictates which Plaid API environment you will access. Values are:
 
-- `PlaidEnvironments.production` - production use, creates `Item`s on https://production.plaid.com
-- `PlaidEnvironments.development` - use for integration development and testing, creates `Item`s on https://development.plaid.com
-- `PlaidEnvironments.sandbox` - quickly build out your integration with stateful test data, creates `Item`s on https://sandbox.plaid.com
+  - `PlaidEnvironments.production` - production use, creates `Item`s on https://production.plaid.com
+  - `PlaidEnvironments.development` - use for integration development and testing, creates `Item`s on https://development.plaid.com
+  - `PlaidEnvironments.sandbox` - quickly build out your integration with stateful test data, creates `Item`s on https://sandbox.plaid.com
 
-The `baseOptions` field allows for clients to override the default options used to make requests. e.g.
+  The `baseOptions` field allows for clients to override the default options used to make requests. e.g.
 
 ```typescript
 const configuration = new Configuration({
@@ -68,25 +68,25 @@ const configuration = new Configuration({
 
 ## Dates
 
-Dates and datetimes in requests and responses are represented as strings. 
+  Dates and datetimes in requests and responses are represented as strings. 
 
-Time zone information is required for request fields that accept datetimes. Failing to include time zone information will result in an error. See the following examples for guidance on syntax.
+  Time zone information is required for request fields that accept datetimes. Failing to include time zone information will result in an error. See the following examples for guidance on syntax.
 
-If the API reference documentation for a field specifies `format: date`, use a string formatted as `'YYYY-MM-DD'`:
+  If the API reference documentation for a field specifies `format: date`, use a string formatted as `'YYYY-MM-DD'`:
 
 ```js
 const start_date = '2022-05-05';
 ```
 
-If the API reference documentation for a field specifies `format: date-time`, use a string formatted as `'YYYY-MM-DDTHH:mm:ssZ'`:
+  If the API reference documentation for a field specifies `format: date-time`, use a string formatted as `'YYYY-MM-DDTHH:mm:ssZ'`:
 
 ```js
-const start_date = '2019-12-12T22:35:49Z';
+  const start_date = '2019-12-12T22:35:49Z';
 ```
 
-## Error Handling
+  ## Error Handling
 
-All errors can now be caught using `try/catch` with `async/await` or through promise chaining.
+  All errors can now be caught using `try/catch` with `async/await` or through promise chaining.
 
 ```typescript
 try {
@@ -106,13 +106,13 @@ plaidClient
     console.log(e.response.data);
   });
 ```
-Note that the full error object includes the API configuration object, including the request headers, which in turn include the API key and secret. To avoid logging your API secret, log only `error.data` and/or avoid logging the full `error.config.headers` object.
+  Note that the full error object includes the API configuration object, including the request headers, which in turn include the API key and secret. To avoid logging your API secret, log only `error.data` and/or avoid logging the full `error.config.headers` object.
 
-## Examples
+  ## Examples
 
-For more examples, see the [test suites](https://github.com/plaid/plaid-node/tree/master/test), [Quickstart](https://github.com/plaid/quickstart/tree/master/node), or [API Reference documentation](https://plaid.com/docs/api/).
+  For more examples, see the [test suites](https://github.com/plaid/plaid-node/tree/master/test), [Quickstart](https://github.com/plaid/quickstart/tree/master/node), or [API Reference documentation](https://plaid.com/docs/api/).
 
-Exchange a `public_token` from [Plaid Link][6] for a Plaid `access_token` and then
+  Exchange a `public_token` from [Plaid Link][6] for a Plaid `access_token` and then
 retrieve account data:
 
 ```typescript
@@ -123,7 +123,7 @@ const accounts = accounts_response.data.accounts;
 ```
 
 
-Retrieve the last 100 transactions for a transactions user (new, recommended method):
+  Retrieve the last 100 transactions for a transactions user (new, recommended method):
 
 ```typescript
 const response = await plaidClient.transactionsSync({
@@ -133,7 +133,7 @@ const transactions = response.data.transactions;
 );
 ```
 
-Retrieve the transactions for a transactions user for the last thirty days (using the older method):
+  Retrieve the transactions for a transactions user for the last thirty days (using the older method):
 
 ```typescript
 const now = moment();
@@ -180,9 +180,9 @@ fs.writeFileSync('asset_report.pdf', pdfResp.data);
 
 ## Promise Support
 
-Every method returns a promise, so you can use `async/await` or promise chaining.
+  Every method returns a promise, so you can use `async/await` or promise chaining.
 
-API methods that return either a success or an error can be used with the
+  API methods that return either a success or an error can be used with the
 usual `then/catch` paradigm, e.g.
 
 ```typescript
@@ -280,16 +280,16 @@ app.listen(port, () => {
 
 ### 9.0.0 or later to latest
 
-Migrating from version 9.0.0 or later of the library to a recent version should involve very minor integration changes. Many customers will not need to make changes to their integrations at all. To see a list of all potentially-breaking changes since your current version, see the [client library changelog](https://github.com/plaid/plaid-node/blob/master/CHANGELOG.md) and search for "Breaking changes in this version". Breaking changes are annotated at the top of each major version header.
+  Migrating from version 9.0.0 or later of the library to a recent version should involve very minor integration changes. Many customers will not need to make changes to their integrations at all. To see a list of all potentially-breaking changes since your current version, see the [client library changelog](https://github.com/plaid/plaid-node/blob/master/CHANGELOG.md) and search for "Breaking changes in this version". Breaking changes are annotated at the top of each major version header.
 
-### Pre-9.0.0 to latest
+  ### Pre-9.0.0 to latest
 
-Version 9.0.0 of the client library was released in August 2021 and represents a major interface change. Any customer migrating from a version prior to 9.0.0 should consult the migration guide below. 
+  Version 9.0.0 of the client library was released in August 2021 and represents a major interface change. Any customer migrating from a version prior to 9.0.0 should consult the migration guide below. 
 
-This version represents a transition in how we maintain our external client libraries. We are now using an [API spec](https://github.com/plaid/plaid-openapi) written in `OpenAPI 3.0.0` and running our definition file through [OpenAPITool's `typescript-axios` generator](https://github.com/OpenAPITools/openapi-generator). All tests have been rewritten in Typescript.
+  This version represents a transition in how we maintain our external client libraries. We are now using an [API spec](https://github.com/plaid/plaid-openapi) written in `OpenAPI 3.0.0` and running our definition file through [OpenAPITool's `typescript-axios` generator](https://github.com/OpenAPITools/openapi-generator). All tests have been rewritten in Typescript.
 
-#### Client initialization
-From:
+  #### Client initialization
+  From:
 ```javascript
 const configs = {
   clientID: CLIENT_ID,
@@ -321,12 +321,12 @@ new PlaidApi(configuration);
 
 #### Endpoints
 
-All endpoint requests now take a request model, have better Typescript support and the functions have been renamed to move the verb to the end (e.g `getTransactions` is now `transactionsGet`).
-Callbacks are no longer supported.
+  All endpoint requests now take a request model, have better Typescript support and the functions have been renamed to move the verb to the end (e.g `getTransactions` is now `transactionsGet`).
+  Callbacks are no longer supported.
 
 From:
 ```javascript
-pCl.sandboxPublicTokenCreate(testConstants.INSTITUTION,
+    pCl.sandboxPublicTokenCreate(testConstants.INSTITUTION,
   testConstants.PRODUCTS, {}, cb);
 
 ```
@@ -342,7 +342,7 @@ const request: SandboxPublicTokenCreateRequest = {
 const response = await plaidClient.sandboxPublicTokenCreate(request);
 ```
 
-#### Errors
+  #### Errors
 From:
 ```javascript
 pCl.getTransactions(accessToken, startDate, endDate,
@@ -400,38 +400,38 @@ try {
 }
 ```
 
-#### Enums
+  #### Enums
 While the API and pre-9.0.0 versions represent enums using strings, 9.0.0 and later allows either strings or Node enums.
 
-Old:
+  Old:
 ```typescript
 products: ['auth', 'transactions'],
 ```
 
-Current:
+  Current:
 
 ```typescript
 products: ['auth', 'transactions'],
 
 // or
 
-const { Products } = require("plaid");
+  const { Products } = require("plaid");
 
-products: [Products.Auth, Products.Transactions],
+  products: [Products.Auth, Products.Transactions],
 ```
 
 
-## Support
+  ## Support
 
-Open an [issue][4]!
+  Open an [issue][4]!
 
-## Contributing
+  ## Contributing
 
-Click [here][7]!
+  Click [here][7]!
 
-## License
+  ## License
 
-[MIT][5]
+  [MIT][5]
 
 [1]: https://plaid.com
 [2]: https://plaid.com/docs
