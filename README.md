@@ -1,4 +1,4 @@
-  # plaid-node [![npm version](https://badge.fury.io/js/plaid.svg)](http://badge.fury.io/js/plaid)
+vin23  # plaid-node [![npm version](https://badge.fury.io/js/plaid.svg)](http://badge.fury.io/js/plaid)
 
   The official Node.js client library for the [Plaid API][1].
 
